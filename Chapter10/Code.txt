@@ -1,0 +1,71 @@
+bool isLoaded = false;
+SqlConnection conn;
+ContextBuilder<AWModel> builder;
+
+try
+{
+
+    conn = new SqlConnection("Data Source=SCOTT-LAPTOP;Initial Catalog=EF40;User ID=sa;PWD=Yamahayz1;MultipleActiveResultSets=True;");
+
+    builder = new ContextBuilder<AWModel>();
+    Registerconfig(builder);
+    var context = builder.Create(conn);
+    context.ContextOptions.LazyLoadingEnabled = true;
+
+    var query = from c in context.Contact
+                where c.LastName.StartsWith("G")
+                orderby c.FirstName
+                select new { c.ContactID, c.FirstName, c.LastName };
+
+    isLoaded = false;
+    listBox1.DataSource = query;
+    listBox1.DisplayMember = "FirstName";
+    listBox1.ValueMember = "ContactID";
+    isLoaded = true;
+
+}
+catch (Exception ex)
+{
+    MessageBox.Show(ex.Message);
+    if (ex.InnerException != null)
+    {
+        MessageBox.Show(ex.InnerException.Message);
+    }
+}
+
+
+
+try
+{
+    if (isLoaded == true)
+    {
+        var context = builder.Create(conn);
+        context.ContextOptions.LazyLoadingEnabled = true;
+        
+        int id = (int)listBox1.SelectedValue;
+        label1.Text = id.ToString();
+
+        var query = from emp in context.Employee
+                    where emp.Contact.ContactID == id
+                    select emp;
+
+        dataGridView1.DataSource = query;
+    }
+}
+catch (Exception ex)
+{
+    MessageBox.Show(ex.Message);
+    if (ex.InnerException != null)
+    {
+        MessageBox.Show(ex.InnerException.Message);
+    }
+}
+
+
+
+
+var query = from c in context.Contact
+            //join emp in context.Employee on c.ContactID equals emp.Contact.ContactID
+            where c.LastName.StartsWith("G")
+            orderby c.FirstName
+            select new { c.ContactID, c.FirstName, c.LastName };

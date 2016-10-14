@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Motocross.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="MotocrossStoreContainer">
+    <EntitySet Name="Teams" EntityType="Motocross.Store.Teams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Riders" EntityType="Motocross.Store.Riders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Classes" EntityType="Motocross.Store.Classes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Brands" EntityType="Motocross.Store.Brands" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="BrandTeam" Association="Motocross.Store.BrandTeam">
+      <End Role="Brand" EntitySet="Brands" />
+      <End Role="Team" EntitySet="Teams" />
+    </AssociationSet>
+    <AssociationSet Name="ClassRider" Association="Motocross.Store.ClassRider">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Rider" EntitySet="Riders" />
+    </AssociationSet>
+    <AssociationSet Name="TeamRider" Association="Motocross.Store.TeamRider">
+      <End Role="Team" EntitySet="Teams" />
+      <End Role="Rider" EntitySet="Riders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Teams">
+    <Key>
+      <PropertyRef Name="TeamID" />
+    </Key>
+    <Property Name="TeamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeamName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsSupportTeam" Type="bit" Nullable="false" />
+    <Property Name="BrandID" Type="int" Nullable="false" />
+    <Property Name="Brand_BrandID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Riders">
+    <Key>
+      <PropertyRef Name="RiderID" />
+    </Key>
+    <Property Name="RiderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Age" Type="smallint" Nullable="false" />
+    <Property Name="ClassID" Type="int" Nullable="false" />
+    <Property Name="TeamID" Type="int" Nullable="false" />
+    <Property Name="Class_ClassID" Type="int" Nullable="false" />
+    <Property Name="Team_TeamID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="ClassID" />
+    </Key>
+    <Property Name="ClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Brands">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="BrandTeam">
+    <End Role="Brand" Type="Motocross.Store.Brands" Multiplicity="1" />
+    <End Role="Team" Type="Motocross.Store.Teams" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="Team">
+        <PropertyRef Name="Brand_BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassRider">
+    <End Role="Class" Type="Motocross.Store.Classes" Multiplicity="1" />
+    <End Role="Rider" Type="Motocross.Store.Riders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="ClassID" />
+      </Principal>
+      <Dependent Role="Rider">
+        <PropertyRef Name="Class_ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TeamRider">
+    <End Role="Team" Type="Motocross.Store.Teams" Multiplicity="1" />
+    <End Role="Rider" Type="Motocross.Store.Riders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="TeamID" />
+      </Principal>
+      <Dependent Role="Rider">
+        <PropertyRef Name="Team_TeamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Motocross" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="MotocrossContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Teams" EntityType="Motocross.Team" />
+          <EntitySet Name="Riders" EntityType="Motocross.Rider" />
+          <EntitySet Name="Classes" EntityType="Motocross.Class" />
+          <EntitySet Name="Brands" EntityType="Motocross.Brand" />
+          <AssociationSet Name="BrandTeam" Association="Motocross.BrandTeam">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Team" EntitySet="Teams" /></AssociationSet>
+          <AssociationSet Name="ClassRider" Association="Motocross.ClassRider">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Rider" EntitySet="Riders" /></AssociationSet>
+          <AssociationSet Name="TeamRider" Association="Motocross.TeamRider">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Rider" EntitySet="Riders" /></AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamID" /></Key>
+          <Property Type="Int32" Name="TeamID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TeamName" Nullable="false" />
+          <Property Type="Boolean" Name="IsSupportTeam" Nullable="false" />
+          <Property Type="Int32" Name="BrandID" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Motocross.BrandTeam" FromRole="Team" ToRole="Brand" />
+          <NavigationProperty Name="Riders" Relationship="Motocross.TeamRider" FromRole="Team" ToRole="Rider" />
+          </EntityType>
+        <EntityType Name="Rider">
+          <Key>
+            <PropertyRef Name="RiderID" /></Key>
+          <Property Type="Int32" Name="RiderID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="MiddleName" Nullable="true" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="Int16" Name="Age" Nullable="false" />
+          <Property Type="Int32" Name="ClassID" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="Motocross.ClassRider" FromRole="Rider" ToRole="Class" />
+          <Property Type="Int32" Name="TeamID" Nullable="false" />
+          <NavigationProperty Name="Team" Relationship="Motocross.TeamRider" FromRole="Rider" ToRole="Team" />
+          </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassID" /></Key>
+          <Property Type="Int32" Name="ClassID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ClassName" Nullable="false" />
+          <NavigationProperty Name="Riders" Relationship="Motocross.ClassRider" FromRole="Class" ToRole="Rider" /></EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandID" /></Key>
+          <Property Type="Int32" Name="BrandID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BrandName" Nullable="false" />
+          <NavigationProperty Name="Teams" Relationship="Motocross.BrandTeam" FromRole="Brand" ToRole="Team" /></EntityType>
+        <Association Name="BrandTeam">
+          <End Type="Motocross.Brand" Role="Brand" Multiplicity="1" />
+          <End Type="Motocross.Team" Role="Team" Multiplicity="*" /></Association>
+        <Association Name="ClassRider">
+          <End Type="Motocross.Class" Role="Class" Multiplicity="1" />
+          <End Type="Motocross.Rider" Role="Rider" Multiplicity="*" /></Association>
+        <Association Name="TeamRider">
+          <End Type="Motocross.Team" Role="Team" Multiplicity="1" />
+          <End Type="Motocross.Rider" Role="Rider" Multiplicity="*" /></Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MotocrossStoreContainer" CdmEntityContainer="MotocrossContainer">
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="IsTypeOf(Motocross.Team)">
+        <MappingFragment StoreEntitySet="Teams">
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="IsSupportTeam" ColumnName="IsSupportTeam" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Riders">
+      <EntityTypeMapping TypeName="IsTypeOf(Motocross.Rider)">
+        <MappingFragment StoreEntitySet="Riders">
+          <ScalarProperty Name="RiderID" ColumnName="RiderID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="IsTypeOf(Motocross.Class)">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="IsTypeOf(Motocross.Brand)">
+        <MappingFragment StoreEntitySet="Brands">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="BrandTeam" TypeName="Motocross.BrandTeam" StoreEntitySet="Teams">
+      <EndProperty Name="Brand">
+        <ScalarProperty Name="BrandID" ColumnName="Brand_BrandID" />
+      </EndProperty>
+      <EndProperty Name="Team">
+        <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClassRider" TypeName="Motocross.ClassRider" StoreEntitySet="Riders">
+      <EndProperty Name="Class">
+        <ScalarProperty Name="ClassID" ColumnName="Class_ClassID" />
+      </EndProperty>
+      <EndProperty Name="Rider">
+        <ScalarProperty Name="RiderID" ColumnName="RiderID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TeamRider" TypeName="Motocross.TeamRider" StoreEntitySet="Riders">
+      <EndProperty Name="Team">
+        <ScalarProperty Name="TeamID" ColumnName="Team_TeamID" />
+      </EndProperty>
+      <EndProperty Name="Rider">
+        <ScalarProperty Name="RiderID" ColumnName="RiderID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Motocross" DisplayType="true" ZoomLevel="75" >
+        <EntityTypeShape EntityType="Motocross.Team" Width="2.125" PointX="2.875" PointY="0.625" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Motocross.Rider" Width="1.875" PointX="5.875" PointY="0.5" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="Motocross.Class" Width="1.75" PointX="8.625" PointY="0.5" Height="1.59568359375" />
+        <EntityTypeShape EntityType="Motocross.Brand" Width="1.875" PointX="0.5" PointY="2.75" Height="1.5956835937499996" />
+        <AssociationConnector Association="Motocross.BrandTeam">
+          <ConnectorPoint PointX="1.4375" PointY="2.75" />
+          <ConnectorPoint PointX="1.4375" PointY="1.6874995" />
+          <ConnectorPoint PointX="2.875" PointY="1.6874995" />
+          </AssociationConnector>
+        <AssociationConnector Association="Motocross.ClassRider">
+          <ConnectorPoint PointX="8.625" PointY="1.2978417968750002" />
+          <ConnectorPoint PointX="7.75" PointY="1.2978417968750002" /></AssociationConnector>
+        <AssociationConnector Association="Motocross.TeamRider">
+          <ConnectorPoint PointX="5" PointY="1.7112939453124998" />
+          <ConnectorPoint PointX="5.875" PointY="1.7112939453124998" /></AssociationConnector>
+        </Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,11 @@
+instructions for chapter 7
+
+Create new database 
+Run script
+Create new class project called EF40Data
+Delete Class1.cs
+Add New ADO.NET EDM to the project.
+Name EF40Model
+Generate from database
+Create new connection to database
+SELECT ALL

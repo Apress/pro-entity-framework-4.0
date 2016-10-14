@@ -1,0 +1,8 @@
+var query = (from p in context.People
+            select new { p.LastName, p.FirstName, p.MiddleName, p.BusinessEntityID }).ToList();
+
+
+
+var query = (from p in context.People
+             where p.LastName.StartsWith("K")
+            select new { p.LastName, p.FirstName, p.MiddleName, p.BusinessEntityID }).Count();

@@ -1,0 +1,10 @@
+C:\Projects\APress\Chapter7\SimpleFKAssociation\SimpleFKAssociation\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Projects\APress\Chapter7\SimpleFKAssociation\SimpleFKAssociation\obj\x86\Debug\SimpleFKAssociation.Form1.resources
+C:\Projects\APress\Chapter7\SimpleFKAssociation\SimpleFKAssociation\obj\x86\Debug\SimpleFKAssociation.Properties.Resources.resources
+C:\Projects\APress\Chapter7\SimpleFKAssociation\SimpleFKAssociation\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Projects\APress\Chapter7\SimpleFKAssociation\SimpleFKAssociation\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Projects\APress\Chapter7\SimpleFKAssociation\SimpleFKAssociation\bin\Debug\SimpleFKAssociation.exe.config
+C:\Projects\APress\Chapter7\SimpleFKAssociation\SimpleFKAssociation\bin\Debug\SimpleFKAssociation.exe
+C:\Projects\APress\Chapter7\SimpleFKAssociation\SimpleFKAssociation\bin\Debug\SimpleFKAssociation.pdb
+C:\Projects\APress\Chapter7\SimpleFKAssociation\SimpleFKAssociation\obj\x86\Debug\SimpleFKAssociation.exe
+C:\Projects\APress\Chapter7\SimpleFKAssociation\SimpleFKAssociation\obj\x86\Debug\SimpleFKAssociation.pdb

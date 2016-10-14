@@ -1,0 +1,1 @@
+C:\Projects\APress\Chapter6\EFDemo\EFDemo\bin\Debug\EFDemo.exe.config

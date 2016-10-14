@@ -1,0 +1,43 @@
+grid.Rows[e.RowIndex].Cells[ProductModelName.Index].Value = prod.ProductModel.Name;
+grid.Rows[e.RowIndex].Cells[ProductSubCategoryName.Index].Value = prod.ProductSubcategory.Name;
+
+
+EF40Data.EF40Entities context;
+EF40Data.ProductModel prodMods;
+bool isNew;
+
+private void productModelBindingSource_AddingNew(object sender, AddingNewEventArgs e)
+{
+    isNew = true;
+}
+
+private void productModelBindingSource_CurrentChanged(object sender, EventArgs e)
+{
+    if (isNew)
+    {
+        try
+        {
+            if (nameTextBox.Text.Length > 0)
+            {
+                productModelBindingSource.EndEdit();
+                prodMods = new EF40Data.ProductModel();
+                prodMods.Name = nameTextBox.Text;
+                context.ProductModels.AddObject(prodMods);
+                isNew = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException != null)
+                MessageBox.Show(ex.InnerException.Message.ToString());
+            else
+                MessageBox.Show(ex.Message.ToString());
+        }
+    }
+}
+
+private void productModelBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+{
+    productModelBindingSource.EndEdit();
+    context.SaveChanges();
+}

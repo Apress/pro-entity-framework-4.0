@@ -1,0 +1,1 @@
+C:\Projects\APress\Chapter10\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config

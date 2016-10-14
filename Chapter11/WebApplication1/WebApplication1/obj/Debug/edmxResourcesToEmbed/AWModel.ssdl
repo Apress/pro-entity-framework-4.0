@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdventureWorksModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="AdventureWorksModelStoreContainer">
+    <EntitySet Name="Employee" EntityType="AdventureWorksModel.Store.Employee" store:Type="Tables" Schema="HumanResources" />
+    <EntitySet Name="EmployeeAddress" EntityType="AdventureWorksModel.Store.EmployeeAddress" store:Type="Tables" Schema="HumanResources" />
+    <EntitySet Name="Address" EntityType="AdventureWorksModel.Store.Address" store:Type="Tables" Schema="Person" />
+    <EntitySet Name="Contact" EntityType="AdventureWorksModel.Store.Contact" store:Type="Tables" Schema="Person" />
+    <EntitySet Name="StateProvince" EntityType="AdventureWorksModel.Store.StateProvince" store:Type="Tables" Schema="Person" />
+    <EntitySet Name="PurchaseOrderHeader" EntityType="AdventureWorksModel.Store.PurchaseOrderHeader" store:Type="Tables" Schema="Purchasing" />
+    <EntitySet Name="SalesPerson" EntityType="AdventureWorksModel.Store.SalesPerson" store:Type="Tables" Schema="Sales" />
+    <EntitySet Name="SalesTerritory" EntityType="AdventureWorksModel.Store.SalesTerritory" store:Type="Tables" Schema="Sales" />
+    <AssociationSet Name="FK_Address_StateProvince_StateProvinceID" Association="AdventureWorksModel.Store.FK_Address_StateProvince_StateProvinceID">
+      <End Role="StateProvince" EntitySet="StateProvince" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Contact_ContactID" Association="AdventureWorksModel.Store.FK_Employee_Contact_ContactID">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Employee_ManagerID" Association="AdventureWorksModel.Store.FK_Employee_Employee_ManagerID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Employee1" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeAddress_Address_AddressID" Association="AdventureWorksModel.Store.FK_EmployeeAddress_Address_AddressID">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="EmployeeAddress" EntitySet="EmployeeAddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeAddress_Employee_EmployeeID" Association="AdventureWorksModel.Store.FK_EmployeeAddress_Employee_EmployeeID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeeAddress" EntitySet="EmployeeAddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrderHeader_Employee_EmployeeID" Association="AdventureWorksModel.Store.FK_PurchaseOrderHeader_Employee_EmployeeID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesPerson_Employee_SalesPersonID" Association="AdventureWorksModel.Store.FK_SalesPerson_Employee_SalesPersonID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="SalesPerson" EntitySet="SalesPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesPerson_SalesTerritory_TerritoryID" Association="AdventureWorksModel.Store.FK_SalesPerson_SalesTerritory_TerritoryID">
+      <End Role="SalesTerritory" EntitySet="SalesTerritory" />
+      <End Role="SalesPerson" EntitySet="SalesPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StateProvince_SalesTerritory_TerritoryID" Association="AdventureWorksModel.Store.FK_StateProvince_SalesTerritory_TerritoryID">
+      <End Role="SalesTerritory" EntitySet="SalesTerritory" />
+      <End Role="StateProvince" EntitySet="StateProvince" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NationalIDNumber" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="ContactID" Type="int" Nullable="false" />
+    <Property Name="LoginID" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="ManagerID" Type="int" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="BirthDate" Type="datetime" Nullable="false" />
+    <Property Name="MaritalStatus" Type="nchar" Nullable="false" MaxLength="1" />
+    <Property Name="Gender" Type="nchar" Nullable="false" MaxLength="1" />
+    <Property Name="HireDate" Type="datetime" Nullable="false" />
+    <Property Name="SalariedFlag" Type="bit" Nullable="false" />
+    <Property Name="VacationHours" Type="smallint" Nullable="false" />
+    <Property Name="SickLeaveHours" Type="smallint" Nullable="false" />
+    <Property Name="CurrentFlag" Type="bit" Nullable="false" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeAddress">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="AddressID" Type="int" Nullable="false" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AddressLine1" Type="nvarchar" Nullable="false" MaxLength="60" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="60" />
+    <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="StateProvinceID" Type="int" Nullable="false" />
+    <Property Name="PostalCode" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NameStyle" Type="bit" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="8" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Suffix" Type="nvarchar" MaxLength="10" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailPromotion" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="25" />
+    <Property Name="PasswordHash" Type="varchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordSalt" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="AdditionalContactInfo" Type="xml" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StateProvince">
+    <Key>
+      <PropertyRef Name="StateProvinceID" />
+    </Key>
+    <Property Name="StateProvinceID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StateProvinceCode" Type="nchar" Nullable="false" MaxLength="3" />
+    <Property Name="CountryRegionCode" Type="nvarchar" Nullable="false" MaxLength="3" />
+    <Property Name="IsOnlyStateProvinceFlag" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="TerritoryID" Type="int" Nullable="false" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PurchaseOrderHeader">
+    <Key>
+      <PropertyRef Name="PurchaseOrderID" />
+    </Key>
+    <Property Name="PurchaseOrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RevisionNumber" Type="tinyint" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="VendorID" Type="int" Nullable="false" />
+    <Property Name="ShipMethodID" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="ShipDate" Type="datetime" />
+    <Property Name="SubTotal" Type="money" Nullable="false" />
+    <Property Name="TaxAmt" Type="money" Nullable="false" />
+    <Property Name="Freight" Type="money" Nullable="false" />
+    <Property Name="TotalDue" Type="money" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesPerson">
+    <Key>
+      <PropertyRef Name="SalesPersonID" />
+    </Key>
+    <Property Name="SalesPersonID" Type="int" Nullable="false" />
+    <Property Name="TerritoryID" Type="int" />
+    <Property Name="SalesQuota" Type="money" />
+    <Property Name="Bonus" Type="money" Nullable="false" />
+    <Property Name="CommissionPct" Type="smallmoney" Nullable="false" />
+    <Property Name="SalesYTD" Type="money" Nullable="false" />
+    <Property Name="SalesLastYear" Type="money" Nullable="false" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesTerritory">
+    <Key>
+      <PropertyRef Name="TerritoryID" />
+    </Key>
+    <Property Name="TerritoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CountryRegionCode" Type="nvarchar" Nullable="false" MaxLength="3" />
+    <Property Name="Group" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="SalesYTD" Type="money" Nullable="false" />
+    <Property Name="SalesLastYear" Type="money" Nullable="false" />
+    <Property Name="CostYTD" Type="money" Nullable="false" />
+    <Property Name="CostLastYear" Type="money" Nullable="false" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Address_StateProvince_StateProvinceID">
+    <End Role="StateProvince" Type="AdventureWorksModel.Store.StateProvince" Multiplicity="1" />
+    <End Role="Address" Type="AdventureWorksModel.Store.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StateProvince">
+        <PropertyRef Name="StateProvinceID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="StateProvinceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Contact_ContactID">
+    <End Role="Contact" Type="AdventureWorksModel.Store.Contact" Multiplicity="1" />
+    <End Role="Employee" Type="AdventureWorksModel.Store.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="ContactID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="ContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Employee_ManagerID">
+    <End Role="Employee" Type="AdventureWorksModel.Store.Employee" Multiplicity="0..1" />
+    <End Role="Employee1" Type="AdventureWorksModel.Store.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Employee1">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeAddress_Address_AddressID">
+    <End Role="Address" Type="AdventureWorksModel.Store.Address" Multiplicity="1" />
+    <End Role="EmployeeAddress" Type="AdventureWorksModel.Store.EmployeeAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="EmployeeAddress">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeAddress_Employee_EmployeeID">
+    <End Role="Employee" Type="AdventureWorksModel.Store.Employee" Multiplicity="1" />
+    <End Role="EmployeeAddress" Type="AdventureWorksModel.Store.EmployeeAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="EmployeeAddress">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseOrderHeader_Employee_EmployeeID">
+    <End Role="Employee" Type="AdventureWorksModel.Store.Employee" Multiplicity="1" />
+    <End Role="PurchaseOrderHeader" Type="AdventureWorksModel.Store.PurchaseOrderHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="PurchaseOrderHeader">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesPerson_Employee_SalesPersonID">
+    <End Role="Employee" Type="AdventureWorksModel.Store.Employee" Multiplicity="1" />
+    <End Role="SalesPerson" Type="AdventureWorksModel.Store.SalesPerson" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="SalesPerson">
+        <PropertyRef Name="SalesPersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesPerson_SalesTerritory_TerritoryID">
+    <End Role="SalesTerritory" Type="AdventureWorksModel.Store.SalesTerritory" Multiplicity="0..1" />
+    <End Role="SalesPerson" Type="AdventureWorksModel.Store.SalesPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesTerritory">
+        <PropertyRef Name="TerritoryID" />
+      </Principal>
+      <Dependent Role="SalesPerson">
+        <PropertyRef Name="TerritoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StateProvince_SalesTerritory_TerritoryID">
+    <End Role="SalesTerritory" Type="AdventureWorksModel.Store.SalesTerritory" Multiplicity="1" />
+    <End Role="StateProvince" Type="AdventureWorksModel.Store.StateProvince" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesTerritory">
+        <PropertyRef Name="TerritoryID" />
+      </Principal>
+      <Dependent Role="StateProvince">
+        <PropertyRef Name="TerritoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

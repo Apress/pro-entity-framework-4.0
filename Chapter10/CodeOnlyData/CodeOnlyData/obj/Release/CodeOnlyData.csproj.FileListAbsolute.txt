@@ -1,0 +1,5 @@
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyData\bin\Release\CodeOnlyData.dll
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyData\bin\Release\CodeOnlyData.pdb
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyData\obj\Release\ResolveAssemblyReference.cache
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyData\obj\Release\CodeOnlyData.dll
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyData\obj\Release\CodeOnlyData.pdb

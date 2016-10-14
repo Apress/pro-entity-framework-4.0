@@ -1,0 +1,41 @@
+SELECT 
+[Extent1].[EmployeeID] AS [EmployeeID], 
+[Extent1].[NationalIDNumber] AS [NationalIDNumber], 
+[Extent1].[ContactID] AS [ContactID], 
+[Extent1].[LoginID] AS [LoginID], 
+[Extent1].[ManagerID] AS [ManagerID], 
+[Extent1].[Title] AS [Title], 
+[Extent1].[BirthDate] AS [BirthDate], 
+[Extent1].[MaritalStatus] AS [MaritalStatus], 
+[Extent1].[Gender] AS [Gender], 
+[Extent1].[HireDate] AS [HireDate], 
+[Extent1].[SalariedFlag] AS [SalariedFlag], 
+[Extent1].[VacationHours] AS [VacationHours], 
+[Extent1].[SickLeaveHours] AS [SickLeaveHours], 
+[Extent1].[CurrentFlag] AS [CurrentFlag], 
+[Extent1].[rowguid] AS [rowguid], 
+[Extent1].[ModifiedDate] AS [ModifiedDate]
+FROM [HumanResources].[Employee] AS [Extent1]
+
+
+
+
+SELECT 
+[Extent1].[ContactID] AS [ContactID], 
+[Extent1].[NameStyle] AS [NameStyle], 
+[Extent1].[Title] AS [Title], 
+[Extent1].[FirstName] AS [FirstName], 
+[Extent1].[MiddleName] AS [MiddleName], 
+[Extent1].[LastName] AS [LastName], 
+[Extent1].[Suffix] AS [Suffix], 
+[Extent1].[EmailAddress] AS [EmailAddress], 
+[Extent1].[EmailPromotion] AS [EmailPromotion], 
+[Extent1].[Phone] AS [Phone], 
+[Extent1].[PasswordHash] AS [PasswordHash], 
+[Extent1].[PasswordSalt] AS [PasswordSalt], 
+[Extent1].[AdditionalContactInfo] AS [AdditionalContactInfo], 
+[Extent1].[rowguid] AS [rowguid], 
+[Extent1].[ModifiedDate] AS [ModifiedDate]
+FROM [Person].[Contact] AS [Extent1]
+WHERE [Extent1].[LastName] LIKE N'K%'
+ORDER BY [Extent1].[LastName] ASC

@@ -1,0 +1,304 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+    <Schema Namespace="AdventureWorksModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityType Name="Employee">
+        <Key>
+          <PropertyRef Name="EmployeeID" />
+        </Key>
+        <Property Name="EmployeeID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="NationalIDNumber" Type="Edm.String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+        <Property Name="ContactID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="LoginID" Type="Edm.String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+        <Property Name="ManagerID" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        <Property Name="BirthDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="MaritalStatus" Type="Edm.String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="true" />
+        <Property Name="Gender" Type="Edm.String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="true" />
+        <Property Name="HireDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="SalariedFlag" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="VacationHours" Type="Edm.Int16" Nullable="false" />
+        <Property Name="SickLeaveHours" Type="Edm.Int16" Nullable="false" />
+        <Property Name="CurrentFlag" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ModifiedDate" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="Contact" Relationship="AdventureWorksModel.FK_Employee_Contact_ContactID" FromRole="Employee" ToRole="Contact" />
+        <NavigationProperty Name="Employee1" Relationship="AdventureWorksModel.FK_Employee_Employee_ManagerID" FromRole="Employee" ToRole="Employee1" />
+        <NavigationProperty Name="Employee2" Relationship="AdventureWorksModel.FK_Employee_Employee_ManagerID" FromRole="Employee1" ToRole="Employee" />
+        <NavigationProperty Name="EmployeeAddresses" Relationship="AdventureWorksModel.FK_EmployeeAddress_Employee_EmployeeID" FromRole="Employee" ToRole="EmployeeAddress" />
+        <NavigationProperty Name="PurchaseOrderHeaders" Relationship="AdventureWorksModel.FK_PurchaseOrderHeader_Employee_EmployeeID" FromRole="Employee" ToRole="PurchaseOrderHeader" />
+        <NavigationProperty Name="SalesPerson" Relationship="AdventureWorksModel.FK_SalesPerson_Employee_SalesPersonID" FromRole="Employee" ToRole="SalesPerson" />
+      </EntityType>
+      <EntityType Name="EmployeeAddress">
+        <Key>
+          <PropertyRef Name="EmployeeID" />
+          <PropertyRef Name="AddressID" />
+        </Key>
+        <Property Name="EmployeeID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="AddressID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ModifiedDate" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="Employee" Relationship="AdventureWorksModel.FK_EmployeeAddress_Employee_EmployeeID" FromRole="EmployeeAddress" ToRole="Employee" />
+        <NavigationProperty Name="Address" Relationship="AdventureWorksModel.FK_EmployeeAddress_Address_AddressID" FromRole="EmployeeAddress" ToRole="Address" />
+      </EntityType>
+      <EntityType Name="Address">
+        <Key>
+          <PropertyRef Name="AddressID" />
+        </Key>
+        <Property Name="AddressID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="AddressLine1" Type="Edm.String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
+        <Property Name="AddressLine2" Type="Edm.String" Nullable="true" MaxLength="60" Unicode="true" FixedLength="false" />
+        <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+        <Property Name="StateProvinceID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PostalCode" Type="Edm.String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+        <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ModifiedDate" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="EmployeeAddresses" Relationship="AdventureWorksModel.FK_EmployeeAddress_Address_AddressID" FromRole="Address" ToRole="EmployeeAddress" />
+        <NavigationProperty Name="StateProvince" Relationship="AdventureWorksModel.FK_Address_StateProvince_StateProvinceID" FromRole="Address" ToRole="StateProvince" />
+      </EntityType>
+      <EntityType Name="Contact">
+        <Key>
+          <PropertyRef Name="ContactID" />
+        </Key>
+        <Property Name="ContactID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="NameStyle" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" MaxLength="8" Unicode="true" FixedLength="false" />
+        <Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        <Property Name="MiddleName" Type="Edm.String" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
+        <Property Name="LastName" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        <Property Name="Suffix" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="true" FixedLength="false" />
+        <Property Name="EmailAddress" Type="Edm.String" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
+        <Property Name="EmailPromotion" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Phone" Type="Edm.String" Nullable="true" MaxLength="25" Unicode="true" FixedLength="false" />
+        <Property Name="PasswordHash" Type="Edm.String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+        <Property Name="PasswordSalt" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+        <Property Name="AdditionalContactInfo" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ModifiedDate" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="Employees" Relationship="AdventureWorksModel.FK_Employee_Contact_ContactID" FromRole="Contact" ToRole="Employee" />
+      </EntityType>
+      <EntityType Name="StateProvince">
+        <Key>
+          <PropertyRef Name="StateProvinceID" />
+        </Key>
+        <Property Name="StateProvinceID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="StateProvinceCode" Type="Edm.String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="true" />
+        <Property Name="CountryRegionCode" Type="Edm.String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+        <Property Name="IsOnlyStateProvinceFlag" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        <Property Name="TerritoryID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ModifiedDate" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="Addresses" Relationship="AdventureWorksModel.FK_Address_StateProvince_StateProvinceID" FromRole="StateProvince" ToRole="Address" />
+        <NavigationProperty Name="SalesTerritory" Relationship="AdventureWorksModel.FK_StateProvince_SalesTerritory_TerritoryID" FromRole="StateProvince" ToRole="SalesTerritory" />
+      </EntityType>
+      <EntityType Name="PurchaseOrderHeader">
+        <Key>
+          <PropertyRef Name="PurchaseOrderID" />
+        </Key>
+        <Property Name="PurchaseOrderID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="RevisionNumber" Type="Edm.Byte" Nullable="false" />
+        <Property Name="Status" Type="Edm.Byte" Nullable="false" />
+        <Property Name="EmployeeID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="VendorID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ShipMethodID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="OrderDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="ShipDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="SubTotal" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <Property Name="TaxAmt" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <Property Name="Freight" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <Property Name="TotalDue" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" p8:StoreGeneratedPattern="Computed" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="ModifiedDate" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="Employee" Relationship="AdventureWorksModel.FK_PurchaseOrderHeader_Employee_EmployeeID" FromRole="PurchaseOrderHeader" ToRole="Employee" />
+      </EntityType>
+      <EntityType Name="SalesPerson">
+        <Key>
+          <PropertyRef Name="SalesPersonID" />
+        </Key>
+        <Property Name="SalesPersonID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TerritoryID" Type="Edm.Int32" Nullable="true" />
+        <Property Name="SalesQuota" Type="Edm.Decimal" Nullable="true" Precision="19" Scale="4" />
+        <Property Name="Bonus" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <Property Name="CommissionPct" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="4" />
+        <Property Name="SalesYTD" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <Property Name="SalesLastYear" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ModifiedDate" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="Employee" Relationship="AdventureWorksModel.FK_SalesPerson_Employee_SalesPersonID" FromRole="SalesPerson" ToRole="Employee" />
+        <NavigationProperty Name="SalesTerritory" Relationship="AdventureWorksModel.FK_SalesPerson_SalesTerritory_TerritoryID" FromRole="SalesPerson" ToRole="SalesTerritory" />
+      </EntityType>
+      <EntityType Name="SalesTerritory">
+        <Key>
+          <PropertyRef Name="TerritoryID" />
+        </Key>
+        <Property Name="TerritoryID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        <Property Name="CountryRegionCode" Type="Edm.String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+        <Property Name="Group" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        <Property Name="SalesYTD" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <Property Name="SalesLastYear" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <Property Name="CostYTD" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <Property Name="CostLastYear" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ModifiedDate" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="StateProvinces" Relationship="AdventureWorksModel.FK_StateProvince_SalesTerritory_TerritoryID" FromRole="SalesTerritory" ToRole="StateProvince" />
+        <NavigationProperty Name="SalesPersons" Relationship="AdventureWorksModel.FK_SalesPerson_SalesTerritory_TerritoryID" FromRole="SalesTerritory" ToRole="SalesPerson" />
+      </EntityType>
+      <Association Name="FK_Employee_Contact_ContactID">
+        <End Role="Contact" Type="AdventureWorksModel.Contact" Multiplicity="1" />
+        <End Role="Employee" Type="AdventureWorksModel.Employee" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Contact">
+            <PropertyRef Name="ContactID" />
+          </Principal>
+          <Dependent Role="Employee">
+            <PropertyRef Name="ContactID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_Employee_Employee_ManagerID">
+        <End Role="Employee" Type="AdventureWorksModel.Employee" Multiplicity="0..1" />
+        <End Role="Employee1" Type="AdventureWorksModel.Employee" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Employee">
+            <PropertyRef Name="EmployeeID" />
+          </Principal>
+          <Dependent Role="Employee1">
+            <PropertyRef Name="ManagerID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_EmployeeAddress_Employee_EmployeeID">
+        <End Role="Employee" Type="AdventureWorksModel.Employee" Multiplicity="1" />
+        <End Role="EmployeeAddress" Type="AdventureWorksModel.EmployeeAddress" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Employee">
+            <PropertyRef Name="EmployeeID" />
+          </Principal>
+          <Dependent Role="EmployeeAddress">
+            <PropertyRef Name="EmployeeID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_PurchaseOrderHeader_Employee_EmployeeID">
+        <End Role="Employee" Type="AdventureWorksModel.Employee" Multiplicity="1" />
+        <End Role="PurchaseOrderHeader" Type="AdventureWorksModel.PurchaseOrderHeader" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Employee">
+            <PropertyRef Name="EmployeeID" />
+          </Principal>
+          <Dependent Role="PurchaseOrderHeader">
+            <PropertyRef Name="EmployeeID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_SalesPerson_Employee_SalesPersonID">
+        <End Role="Employee" Type="AdventureWorksModel.Employee" Multiplicity="1" />
+        <End Role="SalesPerson" Type="AdventureWorksModel.SalesPerson" Multiplicity="0..1" />
+        <ReferentialConstraint>
+          <Principal Role="Employee">
+            <PropertyRef Name="EmployeeID" />
+          </Principal>
+          <Dependent Role="SalesPerson">
+            <PropertyRef Name="SalesPersonID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_EmployeeAddress_Address_AddressID">
+        <End Role="Address" Type="AdventureWorksModel.Address" Multiplicity="1" />
+        <End Role="EmployeeAddress" Type="AdventureWorksModel.EmployeeAddress" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Address">
+            <PropertyRef Name="AddressID" />
+          </Principal>
+          <Dependent Role="EmployeeAddress">
+            <PropertyRef Name="AddressID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_Address_StateProvince_StateProvinceID">
+        <End Role="StateProvince" Type="AdventureWorksModel.StateProvince" Multiplicity="1" />
+        <End Role="Address" Type="AdventureWorksModel.Address" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="StateProvince">
+            <PropertyRef Name="StateProvinceID" />
+          </Principal>
+          <Dependent Role="Address">
+            <PropertyRef Name="StateProvinceID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_StateProvince_SalesTerritory_TerritoryID">
+        <End Role="SalesTerritory" Type="AdventureWorksModel.SalesTerritory" Multiplicity="1" />
+        <End Role="StateProvince" Type="AdventureWorksModel.StateProvince" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="SalesTerritory">
+            <PropertyRef Name="TerritoryID" />
+          </Principal>
+          <Dependent Role="StateProvince">
+            <PropertyRef Name="TerritoryID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_SalesPerson_SalesTerritory_TerritoryID">
+        <End Role="SalesTerritory" Type="AdventureWorksModel.SalesTerritory" Multiplicity="0..1" />
+        <End Role="SalesPerson" Type="AdventureWorksModel.SalesPerson" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="SalesTerritory">
+            <PropertyRef Name="TerritoryID" />
+          </Principal>
+          <Dependent Role="SalesPerson">
+            <PropertyRef Name="TerritoryID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+    </Schema>
+    <Schema Namespace="WebApplication1" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityContainer Name="AdventureWorksEntities" p7:LazyLoadingEnabled="true" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntitySet Name="Employees" EntityType="AdventureWorksModel.Employee" />
+        <EntitySet Name="EmployeeAddresses" EntityType="AdventureWorksModel.EmployeeAddress" />
+        <EntitySet Name="Addresses" EntityType="AdventureWorksModel.Address" />
+        <EntitySet Name="Contacts" EntityType="AdventureWorksModel.Contact" />
+        <EntitySet Name="StateProvinces" EntityType="AdventureWorksModel.StateProvince" />
+        <EntitySet Name="PurchaseOrderHeaders" EntityType="AdventureWorksModel.PurchaseOrderHeader" />
+        <EntitySet Name="SalesPersons" EntityType="AdventureWorksModel.SalesPerson" />
+        <EntitySet Name="SalesTerritories" EntityType="AdventureWorksModel.SalesTerritory" />
+        <AssociationSet Name="FK_Employee_Contact_ContactID" Association="AdventureWorksModel.FK_Employee_Contact_ContactID">
+          <End Role="Contact" EntitySet="Contacts" />
+          <End Role="Employee" EntitySet="Employees" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Employee_Employee_ManagerID" Association="AdventureWorksModel.FK_Employee_Employee_ManagerID">
+          <End Role="Employee" EntitySet="Employees" />
+          <End Role="Employee1" EntitySet="Employees" />
+        </AssociationSet>
+        <AssociationSet Name="FK_EmployeeAddress_Employee_EmployeeID" Association="AdventureWorksModel.FK_EmployeeAddress_Employee_EmployeeID">
+          <End Role="Employee" EntitySet="Employees" />
+          <End Role="EmployeeAddress" EntitySet="EmployeeAddresses" />
+        </AssociationSet>
+        <AssociationSet Name="FK_PurchaseOrderHeader_Employee_EmployeeID" Association="AdventureWorksModel.FK_PurchaseOrderHeader_Employee_EmployeeID">
+          <End Role="Employee" EntitySet="Employees" />
+          <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeaders" />
+        </AssociationSet>
+        <AssociationSet Name="FK_SalesPerson_Employee_SalesPersonID" Association="AdventureWorksModel.FK_SalesPerson_Employee_SalesPersonID">
+          <End Role="Employee" EntitySet="Employees" />
+          <End Role="SalesPerson" EntitySet="SalesPersons" />
+        </AssociationSet>
+        <AssociationSet Name="FK_EmployeeAddress_Address_AddressID" Association="AdventureWorksModel.FK_EmployeeAddress_Address_AddressID">
+          <End Role="Address" EntitySet="Addresses" />
+          <End Role="EmployeeAddress" EntitySet="EmployeeAddresses" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Address_StateProvince_StateProvinceID" Association="AdventureWorksModel.FK_Address_StateProvince_StateProvinceID">
+          <End Role="StateProvince" EntitySet="StateProvinces" />
+          <End Role="Address" EntitySet="Addresses" />
+        </AssociationSet>
+        <AssociationSet Name="FK_StateProvince_SalesTerritory_TerritoryID" Association="AdventureWorksModel.FK_StateProvince_SalesTerritory_TerritoryID">
+          <End Role="SalesTerritory" EntitySet="SalesTerritories" />
+          <End Role="StateProvince" EntitySet="StateProvinces" />
+        </AssociationSet>
+        <AssociationSet Name="FK_SalesPerson_SalesTerritory_TerritoryID" Association="AdventureWorksModel.FK_SalesPerson_SalesTerritory_TerritoryID">
+          <End Role="SalesTerritory" EntitySet="SalesTerritories" />
+          <End Role="SalesPerson" EntitySet="SalesPersons" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

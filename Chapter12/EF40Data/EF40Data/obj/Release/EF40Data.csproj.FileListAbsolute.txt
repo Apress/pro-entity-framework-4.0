@@ -1,0 +1,5 @@
+C:\Projects\APress\Chapter12\EF40Data\EF40Data\bin\Release\EF40Data.dll
+C:\Projects\APress\Chapter12\EF40Data\EF40Data\bin\Release\EF40Data.pdb
+C:\Projects\APress\Chapter12\EF40Data\EF40Data\obj\Release\ResolveAssemblyReference.cache
+C:\Projects\APress\Chapter12\EF40Data\EF40Data\obj\Release\EF40Data.dll
+C:\Projects\APress\Chapter12\EF40Data\EF40Data\obj\Release\EF40Data.pdb

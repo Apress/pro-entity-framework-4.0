@@ -1,0 +1,6 @@
+C:\Projects\APress\Chapter12\EF40Data\EF40Data\bin\Debug\EF40Data.dll.config
+C:\Projects\APress\Chapter12\EF40Data\EF40Data\bin\Debug\EF40Data.dll
+C:\Projects\APress\Chapter12\EF40Data\EF40Data\bin\Debug\EF40Data.pdb
+C:\Projects\APress\Chapter12\EF40Data\EF40Data\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\APress\Chapter12\EF40Data\EF40Data\obj\Debug\EF40Data.dll
+C:\Projects\APress\Chapter12\EF40Data\EF40Data\obj\Debug\EF40Data.pdb

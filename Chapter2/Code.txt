@@ -1,0 +1,61 @@
+public class Contact
+{
+    public Contact() { }
+    public int ContactID { get; set; }
+    public bool NameStyle { get; set; }
+    public string Title { get; set; }
+    public string FirstName { get; set; }
+    public string MiddleName { get; set; }
+    public string LastName { get; set; }
+    public string Suffix { get; set; }
+    public string EmailAddress { get; set; }
+    public int EmailPromotion { get; set; }
+    public string Phone { get; set; }
+    public string PasswordHash { get; set; }
+    public string PasswordSalt { get; set; }
+    public Guid rowguid { get; set; }
+    public DateTime ModifiedDate { get; set; }
+    public ICollection<Employee> Employees { get; set; }
+}
+
+
+public class Employee
+{
+    public Employee() { }
+    public int EmployeeID { get; set; }
+    public string NationalIDNumber { get; set; }
+    public string LoginID { get; set; }
+    public int ManagerID { get; set; }
+    public string Title { get; set; }
+    public DateTime BirthDate { get; set; }
+    public string MaritalStatus { get; set; }
+    public string Gender { get; set; }
+    public DateTime HireDate { get; set; }
+    public bool SalariedFlag { get; set; }
+    public int VacationHours { get; set; }
+    public int SickLeaveHours { get; set; }
+    public bool CurrentFlag { get; set; }
+    public Guid rowguid { get; set; }
+    public DateTime ModifiedDate { get; set; }
+    public Contact Contact { get; set; }
+}
+
+
+public class AWModel : ObjectContext
+{
+    public AWModel(EntityConnection connection)
+        : base(connection)
+    {
+        DefaultContainerName = "AWModel";
+    }
+
+    public IObjectSet<Contact> Contact
+    {
+        get { return base.CreateObjectSet<Contact>(); }
+    }
+
+    public IObjectSet<Employee> Employee
+    {
+        get { return base.CreateObjectSet<Employee>(); }
+    }
+}

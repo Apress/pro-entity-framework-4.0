@@ -1,0 +1,10 @@
+C:\Projects\APress\Chapter10\AWCodeOnlyUI\AWCodeOnlyData\bin\Debug\AWCodeOnlyData.dll
+C:\Projects\APress\Chapter10\AWCodeOnlyUI\AWCodeOnlyData\bin\Debug\AWCodeOnlyData.pdb
+C:\Projects\APress\Chapter10\AWCodeOnlyUI\AWCodeOnlyData\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\APress\Chapter10\AWCodeOnlyUI\AWCodeOnlyData\obj\Debug\AWCodeOnlyData.dll
+C:\Projects\APress\Chapter10\AWCodeOnlyUI\AWCodeOnlyData\obj\Debug\AWCodeOnlyData.pdb
+C:\Projects\APress\Chapter10\AWCodeOnlyUI_bak\AWCodeOnlyData\bin\Debug\AWCodeOnlyData.dll
+C:\Projects\APress\Chapter10\AWCodeOnlyUI_bak\AWCodeOnlyData\bin\Debug\AWCodeOnlyData.pdb
+C:\Projects\APress\Chapter10\AWCodeOnlyUI_bak\AWCodeOnlyData\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\APress\Chapter10\AWCodeOnlyUI_bak\AWCodeOnlyData\obj\Debug\AWCodeOnlyData.dll
+C:\Projects\APress\Chapter10\AWCodeOnlyUI_bak\AWCodeOnlyData\obj\Debug\AWCodeOnlyData.pdb

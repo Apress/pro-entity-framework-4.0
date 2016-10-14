@@ -1,0 +1,11 @@
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyUI\bin\Debug\CodeOnlyUI.exe
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyUI\bin\Debug\CodeOnlyUI.pdb
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyUI\bin\Debug\CodeOnlyData.dll
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyUI\bin\Debug\CodeOnlyData.pdb
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyUI\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyUI\obj\x86\Debug\CodeOnlyUI.Form1.resources
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyUI\obj\x86\Debug\CodeOnlyUI.Properties.Resources.resources
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyUI\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyUI\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyUI\obj\x86\Debug\CodeOnlyUI.exe
+C:\Projects\APress\Chapter10\CodeOnlyData\CodeOnlyUI\obj\x86\Debug\CodeOnlyUI.pdb

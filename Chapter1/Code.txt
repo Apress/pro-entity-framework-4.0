@@ -1,0 +1,4 @@
+SELECT c.FirstName, c.LastName, e.Title, e.HireDate, aci.CellPhone, aci.EmailAddress
+FROM Contact c
+INNER JOIN AdditionalContactInfo aci ON c.ContactID = aci.ContactID
+INNER JOIN Employee e ON c.ContactID = e.ContactID

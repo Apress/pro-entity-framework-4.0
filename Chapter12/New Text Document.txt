@@ -1,0 +1,19 @@
+try
+{
+    context = new EF40Entities();
+    var query = from con in context.Contacts
+                select con;
+
+    foreach (var asdf in query)
+    {
+        listBox1.Items.Add(asdf.FirstName);
+    }
+}
+catch (Exception ex)
+{
+    MessageBox.Show(ex.Message.ToString());
+}
+finally
+{
+    context = null;
+}

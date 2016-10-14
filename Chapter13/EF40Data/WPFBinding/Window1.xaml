@@ -1,0 +1,65 @@
+﻿<Window x:Class="WPFBinding.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="300" Width="300" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:my="clr-namespace:EF40Data;assembly=EF40Data" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="salesOrderHeaderViewSource" d:DesignSource="{d:DesignInstance my:SalesOrderHeader, CreateList=True}" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource salesOrderHeaderViewSource}">
+        <DataGrid AutoGenerateColumns="False" EnableRowVirtualization="True" Height="200" HorizontalAlignment="Left" ItemsSource="{Binding}" Margin="10,56,0,0" Name="salesOrderHeaderDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" VerticalAlignment="Top" Width="400">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="accountNumberColumn" Binding="{Binding Path=AccountNumber}" Header="Account Number" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="billToAddressIDColumn" Binding="{Binding Path=BillToAddressID}" Header="Bill To Address ID" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="commentColumn" Binding="{Binding Path=Comment}" Header="Comment" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="contactIDColumn" Binding="{Binding Path=ContactID}" Header="Contact ID" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="creditCardApprovalCodeColumn" Binding="{Binding Path=CreditCardApprovalCode}" Header="Credit Card Approval Code" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="creditCardIDColumn" Binding="{Binding Path=CreditCardID}" Header="Credit Card ID" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="currencyRateIDColumn" Binding="{Binding Path=CurrencyRateID}" Header="Currency Rate ID" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="customerIDColumn" Binding="{Binding Path=CustomerID}" Header="Customer ID" Width="SizeToHeader" />
+                <DataGridTemplateColumn x:Name="dueDateColumn" Header="Due Date" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Path=DueDate}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="freightColumn" Binding="{Binding Path=Freight}" Header="Freight" Width="SizeToHeader" />
+                <DataGridTemplateColumn x:Name="modifiedDateColumn" Header="Modified Date" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Path=ModifiedDate}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridCheckBoxColumn x:Name="onlineOrderFlagColumn" Binding="{Binding Path=OnlineOrderFlag}" Header="Online Order Flag" Width="SizeToHeader" />
+                <DataGridTemplateColumn x:Name="orderDateColumn" Header="Order Date" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Path=OrderDate}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="purchaseOrderNumberColumn" Binding="{Binding Path=PurchaseOrderNumber}" Header="Purchase Order Number" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="revisionNumberColumn" Binding="{Binding Path=RevisionNumber}" Header="Revision Number" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="rowguidColumn" Binding="{Binding Path=rowguid}" Header="rowguid" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="salesOrderIDColumn" Binding="{Binding Path=SalesOrderID}" Header="Sales Order ID" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="salesOrderNumberColumn" Binding="{Binding Path=SalesOrderNumber}" Header="Sales Order Number" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="salesPersonIDColumn" Binding="{Binding Path=SalesPersonID}" Header="Sales Person ID" Width="SizeToHeader" />
+                <DataGridTemplateColumn x:Name="shipDateColumn" Header="Ship Date" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Path=ShipDate}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="shipMethodIDColumn" Binding="{Binding Path=ShipMethodID}" Header="Ship Method ID" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="shipToAddressIDColumn" Binding="{Binding Path=ShipToAddressID}" Header="Ship To Address ID" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="statusColumn" Binding="{Binding Path=Status}" Header="Status" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="subTotalColumn" Binding="{Binding Path=SubTotal}" Header="Sub Total" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="taxAmtColumn" Binding="{Binding Path=TaxAmt}" Header="Tax Amt" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="territoryIDColumn" Binding="{Binding Path=TerritoryID}" Header="Territory ID" Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="totalDueColumn" Binding="{Binding Path=TotalDue}" Header="Total Due" Width="SizeToHeader" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

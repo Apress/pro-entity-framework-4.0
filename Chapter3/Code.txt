@@ -1,0 +1,146 @@
+#region Constructors
+
+/// <summary>
+/// Initializes a new AdventureWorks2008Entities object using the connection string found in the 'AdventureWorks2008Entities' section of the application configuration file.
+/// </summary>
+public AdventureWorks2008Entities() : base("name=AdventureWorks2008Entities", "AdventureWorks2008Entities")
+{
+    this.ContextOptions.LazyLoadingEnabled = true;
+    OnContextCreated();
+}
+
+/// <summary>
+/// Initialize a new AdventureWorks2008Entities object.
+/// </summary>
+public AdventureWorks2008Entities(string connectionString) : base(connectionString, "AdventureWorks2008Entities")
+{
+    this.ContextOptions.LazyLoadingEnabled = true;
+    OnContextCreated();
+}
+
+/// <summary>
+/// Initialize a new AdventureWorks2008Entities object.
+/// </summary>
+public AdventureWorks2008Entities(EntityConnection connection) : base(connection, "AdventureWorks2008Entities")
+{
+    this.ContextOptions.LazyLoadingEnabled = true;
+    OnContextCreated();
+}
+
+#endregion
+
+
+
+
+/// <summary>
+/// No Metadata Documentation available.
+/// </summary>
+[EdmEntityTypeAttribute(NamespaceName="AdventureWorks2008Model", Name="Person")]
+[Serializable()]
+[DataContractAttribute(IsReference=true)]
+public partial class Person : EntityObject
+{
+#region Factory Method
+
+/// <summary>
+/// Create a new Person object.
+/// </summary>
+/// <param name="businessEntityID">Initial value of the BusinessEntityID property.</param>
+/// <param name="personType">Initial value of the PersonType property.</param>
+/// <param name="nameStyle">Initial value of the NameStyle property.</param>
+/// <param name="firstName">Initial value of the FirstName property.</param>
+/// <param name="lastName">Initial value of the LastName property.</param>
+/// <param name="emailPromotion">Initial value of the EmailPromotion property.</param>
+/// <param name="rowguid">Initial value of the rowguid property.</param>
+/// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
+public static Person CreatePerson(global::System.Int32 businessEntityID, global::System.String personType, global::System.Boolean nameStyle, global::System.String firstName, global::System.String lastName, global::System.Int32 emailPromotion, global::System.Guid rowguid, global::System.DateTime modifiedDate)
+{
+    Person person = new Person();
+    person.BusinessEntityID = businessEntityID;
+    person.PersonType = personType;
+    person.NameStyle = nameStyle;
+    person.FirstName = firstName;
+    person.LastName = lastName;
+    person.EmailPromotion = emailPromotion;
+    person.rowguid = rowguid;
+    person.ModifiedDate = modifiedDate;
+    return person;
+}
+
+#endregion
+#region Primitive Properties
+
+/// <summary>
+/// No Metadata Documentation available.
+/// </summary>
+[EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+[DataMemberAttribute()]
+public global::System.Int32 BusinessEntityID
+{
+    get
+    {
+        return _BusinessEntityID;
+    }
+    set
+    {
+        if (_BusinessEntityID != value)
+        {
+            OnBusinessEntityIDChanging(value);
+            ReportPropertyChanging("BusinessEntityID");
+            _BusinessEntityID = StructuralObject.SetValidValue(value);
+            ReportPropertyChanged("BusinessEntityID");
+            OnBusinessEntityIDChanged();
+        }
+    }
+}
+private global::System.Int32 _BusinessEntityID;
+partial void OnBusinessEntityIDChanging(global::System.Int32 value);
+partial void OnBusinessEntityIDChanged();
+
+/// <summary>
+/// No Metadata Documentation available.
+/// </summary>
+[EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+[DataMemberAttribute()]
+public global::System.String PersonType
+{
+    get
+    {
+        return _PersonType;
+    }
+    set
+    {
+        OnPersonTypeChanging(value);
+        ReportPropertyChanging("PersonType");
+        _PersonType = StructuralObject.SetValidValue(value, false);
+        ReportPropertyChanged("PersonType");
+        OnPersonTypeChanged();
+    }
+}
+private global::System.String _PersonType;
+partial void OnPersonTypeChanging(global::System.String value);
+partial void OnPersonTypeChanged();
+
+/// <summary>
+/// No Metadata Documentation available.
+/// </summary>
+[EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+[DataMemberAttribute()]
+public global::System.Boolean NameStyle
+{
+    get
+    {
+        return _NameStyle;
+    }
+    set
+    {
+        OnNameStyleChanging(value);
+        ReportPropertyChanging("NameStyle");
+        _NameStyle = StructuralObject.SetValidValue(value);
+        ReportPropertyChanged("NameStyle");
+        OnNameStyleChanged();
+    }
+}
+private global::System.Boolean _NameStyle;
+partial void OnNameStyleChanging(global::System.Boolean value);
+partial void OnNameStyleChanged();

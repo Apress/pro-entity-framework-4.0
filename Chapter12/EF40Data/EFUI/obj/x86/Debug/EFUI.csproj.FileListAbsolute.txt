@@ -1,0 +1,12 @@
+C:\Projects\APress\Chapter12\EF40Data\EFUI\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Projects\APress\Chapter12\EF40Data\EFUI\obj\x86\Debug\EFUI.Form1.resources
+C:\Projects\APress\Chapter12\EF40Data\EFUI\obj\x86\Debug\EFUI.Properties.Resources.resources
+C:\Projects\APress\Chapter12\EF40Data\EFUI\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Projects\APress\Chapter12\EF40Data\EFUI\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Projects\APress\Chapter12\EF40Data\EFUI\bin\Debug\EFUI.exe.config
+C:\Projects\APress\Chapter12\EF40Data\EFUI\bin\Debug\EFUI.exe
+C:\Projects\APress\Chapter12\EF40Data\EFUI\bin\Debug\EFUI.pdb
+C:\Projects\APress\Chapter12\EF40Data\EFUI\bin\Debug\EF40Data.dll
+C:\Projects\APress\Chapter12\EF40Data\EFUI\bin\Debug\EF40Data.pdb
+C:\Projects\APress\Chapter12\EF40Data\EFUI\obj\x86\Debug\EFUI.exe
+C:\Projects\APress\Chapter12\EF40Data\EFUI\obj\x86\Debug\EFUI.pdb

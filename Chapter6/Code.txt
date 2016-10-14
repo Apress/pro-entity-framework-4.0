@@ -1,0 +1,52 @@
+<EntitySetMapping Name="People">
+    <EntityTypeMapping TypeName="AdventureWorks2008Model.Person">
+        <MappingFragment StoreEntitySet="Person">
+            <ScalarProperty Name="BusinessEntityID" ColumnName="BusinessEntityID" />
+            <ScalarProperty Name="PersonType" ColumnName="PersonType" />
+            <ScalarProperty Name="NameStyle" ColumnName="NameStyle" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+            <ScalarProperty Name="EmailPromotion" ColumnName="EmailPromotion" />
+            <ScalarProperty Name="AdditionalContactInfo" ColumnName="AdditionalContactInfo" />
+            <ScalarProperty Name="Demographics" ColumnName="Demographics" />
+            <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+            <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+    </EntityTypeMapping>
+    <EntityTypeMapping TypeName="AdventureWorks2008Model.Person">
+        <ModificationFunctionMapping>
+            <InsertFunction FunctionName="AdventureWorks2008Model.Store.InsertPerson">
+                <ScalarProperty Name="ModifiedDate" ParameterName="ModifiedDate" />
+                <ScalarProperty Name="rowguid" ParameterName="rowguid" />
+                <ScalarProperty Name="EmailPromotion" ParameterName="EmailPromotion" />
+                <ScalarProperty Name="Suffix" ParameterName="Suffix" />
+                <ScalarProperty Name="LastName" ParameterName="LastName" />
+                <ScalarProperty Name="MiddleName" ParameterName="MiddleName" />
+                <ScalarProperty Name="FirstName" ParameterName="FirstName" />
+                <ScalarProperty Name="Title" ParameterName="Title" />
+                <ScalarProperty Name="NameStyle" ParameterName="NameStyle" />
+                <ScalarProperty Name="PersonType" ParameterName="PersonType" />
+                <ScalarProperty Name="BusinessEntityID" ParameterName="BusinessEntityID" />
+            </InsertFunction>
+            <UpdateFunction FunctionName="AdventureWorks2008Model.Store.UpdatePerson">
+                <ScalarProperty Name="ModifiedDate" ParameterName="ModifiedDate" Version="Current" />
+                <ScalarProperty Name="rowguid" ParameterName="rowguid" Version="Current" />
+                <ScalarProperty Name="EmailPromotion" ParameterName="EmailPromotion" Version="Current" />
+                <ScalarProperty Name="Suffix" ParameterName="Suffix" Version="Current" />
+                <ScalarProperty Name="LastName" ParameterName="LastName" Version="Current" />
+                <ScalarProperty Name="MiddleName" ParameterName="MiddleName" Version="Current" />
+                <ScalarProperty Name="FirstName" ParameterName="FirstName" Version="Current" />
+                <ScalarProperty Name="Title" ParameterName="Title" Version="Current" />
+                <ScalarProperty Name="NameStyle" ParameterName="NameStyle" Version="Current" />
+                <ScalarProperty Name="PersonType" ParameterName="PersonType" Version="Current" />
+                <ScalarProperty Name="BusinessEntityID" ParameterName="BusinessEntityID" Version="Current" />
+            </UpdateFunction>
+            <DeleteFunction FunctionName="AdventureWorks2008Model.Store.DeletePerson">
+                <ScalarProperty Name="BusinessEntityID" ParameterName="BusinessEntityID" />
+            </DeleteFunction>
+        </ModificationFunctionMapping>
+    </EntityTypeMapping>
+</EntitySetMapping>
